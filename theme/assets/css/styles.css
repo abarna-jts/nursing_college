@@ -1566,7 +1566,7 @@ span.post-date i {
 }
 
 .cnt-info {
-  padding: 40px 30px 40px;
+  padding: 40px 25px 40px;
   background: #fff;
 }
 
@@ -1596,7 +1596,7 @@ span.post-date i {
   color: #fc9928;
 }
 
-#google-map {
+#map {
   height: 100%;
 }
 
