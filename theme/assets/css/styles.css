@@ -1077,13 +1077,14 @@ img.tst-bg {
   margin-bottom: 15px;
 }
 .address h6 {
+ 
   font-weight: 400;
   color: #fc9928;
   text-transform: capitalize;
   margin-bottom: 5px;
 }
 .address p {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .widget-company .social li {
   display: inline-block;
@@ -1146,7 +1147,7 @@ span.post-date i {
 
 .footer-bottom {
   text-align: center;
-  margin-top: 106px;
+  margin-top: 50px;
   border-top: 1px solid #2a2a2a;
   padding-top: 32px;
 }
@@ -1611,7 +1612,7 @@ span.post-date i {
 .crumbs-area {
   position: relative;
   z-index: 1;
-  background: url(../images/bg/bg1.jpg);
+  background: url(../images/n_courses.jpg);
   padding: 213px 0 114px;
   background-size: cover;
 }
@@ -1809,6 +1810,21 @@ span.post-date i {
 
 .cs-social li a:hover {
   color: #fc9928;
+}
+.table_class{
+  width:100%;
+  border-collapse: collapse;
+}
+.table_class th{
+  color:#fff;
+  padding:10px;
+  background-color: #fc9928;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.table_class td{
+  padding: 10px;
+  border:1px solid #fc9928;
 }
 
 .cs-post-author {
@@ -2494,3 +2510,5 @@ h4.comment-title {
   margin-right: 8px;
   width: auto;
 }
+
+
