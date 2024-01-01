@@ -147,6 +147,7 @@ a:hover {
   border-radius: 3px;
   border: none;
   text-transform: uppercase;
+  
 }
 .btn-sm {
   padding: 12px 20px;
@@ -645,7 +646,7 @@ a:hover {
 .abt-rt-inner {
   height: 100%;
   display: flex;
-  background: url(../images/about/abt-right-thumb.jpg) center/cover no-repeat;
+  background: url(../images/c_pic.png) center/cover no-repeat;
 }
 
 a.expand-video {
@@ -681,6 +682,7 @@ a.expand-video:hover {
   box-shadow: 0 -6px 24px rgba(10, 10, 10, 0.09);
 }
 .card {
+ height:800px;
   transition: all 0.3s ease 0s;
 }
 .course-thumb {
@@ -845,7 +847,7 @@ img.title-top-shape {
   display: flex;
   border-radius: 10px;
   overflow: hidden;
-  background: url(../images/bg/take-toure-bg.jpg) center/cover no-repeat;
+  background: url(../images/c_full.png) center/cover no-repeat;
 }
 
 .video-area:before {
@@ -1024,8 +1026,8 @@ img.tst-bg {
   font-size: 22px;
 }
 /* .card-text{
-  width:100%;
-  height:5em;
+  width:100px;
+  height:auto;
 } */
 .sample{
   width:100%;
@@ -1630,7 +1632,7 @@ span.post-date i {
 .crumbs-area {
   position: relative;
   z-index: 1;
-  background: url(../images/bg/bg1.jpg);
+  background: url(../images/in_b_1.png);
   padding: 213px 0 114px;
   background-size: cover;
 }
