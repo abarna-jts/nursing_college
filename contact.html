@@ -121,7 +121,7 @@
     <!-- offset search area start -->
     <div class="offset-search">
         <form action="#">
-            <input type="text" name="search" placeholder="Sarch here...">
+            <input type="text" name="search" placeholder="Search here...">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
@@ -177,27 +177,35 @@
                 <div class="col-md-10 offset-md-1">
                     <div class="cnt-title">
                         <h4>Get in touch <span>with us</span></h4>
-                        <p>Quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut </p>
+                        <p>We Inform you later.  Please fill the below details.</p>
                     </div>
                 </div>
             </div>
             <div class="contact-form">
-                <form>
+                <form id="form">
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="text" name="name" placeholder="Enter your name">
+                            <input type="text" name="name" placeholder="Enter your name" id="name" required 
+                            oninvalid="this.setCustomValidity('Please select all questions and proceed')"
+                            oninput="this.setCustomValidity('')">
                         </div>
                         <div class="col-md-4">
-                            <input type="email" name="email" placeholder="Your Email">
+                            <input type="email" name="emailid" placeholder="Your Email" id="emailid" required 
+                            oninvalid="validateEmail(this)"
+                            oninput="this.setCustomValidity('')">
                         </div>
                         <div class="col-md-4">
-                            <input type="text" name="subject" placeholder="Subject">
+                            <input type="subject" name="subject" placeholder="Subject" id="subject" required 
+                            oninvalid="this.setCustomValidity('Please select all questions and proceed')"
+                            oninput="this.setCustomValidity('')">
                         </div>
                         <div class="col-12">
-                            <textarea name="msg" id="msg" placeholder="Your message here"></textarea>
+                            <textarea name="msg" id="msg" placeholder="Your message here" value="msg" required 
+                            oninvalid="this.setCustomValidity('Please select all questions and proceed')"
+                            oninput="this.setCustomValidity('')"></textarea>
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit">SEND TO US</button>
+                            <button type="submit" name="submit" id="submit" onclick="validate()">SEND TO US</button>
                         </div>
                     </div>
                 </form>
@@ -282,9 +290,66 @@
     <script src="assets/js/jquery.slicknav.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <!-- google map -->
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsUcTjt43mTheN9ruCsQVgBE-wgN6_AfY&#038"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsUcTjt43mTheN9ruCsQVgBE-wgN6_AfY&#038"></script>
     <script src="assets/js/google-maps.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
+<script>
+function validate() {
+    const form = document.querySelector("#form")
+   const submitButton = document.querySelector("#submit")
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbzYSrqQtSjEm9t_ExpZMAofqzeIsonAMW9phZHdS2WYeRFJNro8yAhZil6M_-eP72Ez/exec'
+   form.addEventListener('submit', e => {
+        submitButton.disabled = true;
+        e.preventDefault();
 
+        let requestBody = new FormData(form);
+        fetch(scriptURL, { method: 'POST', body: requestBody })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('Success!', data);
+                submitButton.disabled = false;
+            })
+            .catch(error => {
+                alert('Error!', error.message);
+                submitButton.disabled = false;
+            });
+    });
+}
+
+document.querySelector('#form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    validate();
+});
+
+function validateAge(input) {
+        if (input.validity.valueMissing) {
+            input.setCustomValidity('Please select all questions and proceed');
+        } else if (input.validity.patternMismatch) {
+            input.setCustomValidity('Age should only contain numeric characters');
+        }
+    }
+
+function validateContactNumber(input) {
+        if (input.validity.valueMissing) {
+            input.setCustomValidity('Please select all questions and proceed');
+        } else if (input.validity.patternMismatch) {
+            input.setCustomValidity('Number should contain atleast 10 numeric characters');
+        }
+    }
+
+function validateEmail(input) {
+        if (input.validity.valueMissing) {
+            input.setCustomValidity('Please select all questions and proceed');
+        } else if (input.validity.typeMismatch) {
+            input.setCustomValidity('Enter a valid email address. Please include "@" and ".com"');
+        }
+    }
+
+</script> 
 </html>
