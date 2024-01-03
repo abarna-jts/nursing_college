@@ -22,6 +22,9 @@
     <link rel="stylesheet" id="triggerColor" href="assets/css/triggerplate/color-0.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+    
 </head>
 
 <body>
@@ -573,7 +576,7 @@
                     </div>
                     <!-- comments area end -->
                     <!-- leave comment area start -->
-                    <div class="leave-comment-area">
+                    <!-- <div class="leave-comment-area">
                         <h4 class="comment-title">Leave Your Comment</h4>
                         <form action="#">
                             <div class="row">
@@ -587,6 +590,24 @@
                             <textarea name="msg" id="msg" placeholder="Your message here"></textarea>
                             <button class="btn btn-primary btn-round" type="submit" onclick="postComment()">Post Comment<i class="fa fa-long-arrow-right"></i></button>
                         </form>
+                    </div> -->
+                    <div class="leave-comment-area">
+                        <h4 class="comment-title">Leave Your Comment</h4>
+                        <form id="commentForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" name="Name" id="commentName" placeholder="Enter your name">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" id="commentEmail" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <textarea name="msg" id="commentMsg" placeholder="Your message here"></textarea>
+                            <button class="btn btn-primary btn-round" type="submit" onclick="postComment()">Post Comment<i class="fa fa-long-arrow-right"></i></button>
+                        </form>
+                        <ul id="commentsContainer" class="comment-info-inner">
+                            <!-- Comments will be displayed here -->
+                        </ul>
                     </div>
                     <!-- leave comment area end -->
                 </div>
@@ -868,5 +889,68 @@
         return currentDate.toLocaleDateString("en-US", options);
     }
 </script>
-
+<!-- <script>
+    function getDefaultProfileImage(name) {
+        // Extract first letters from first and last name
+        const initials = name.split(' ').map(word => word[0]).join('');
+    
+        // Create a default profile image with the initials
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = 50;
+        canvas.height = 50;
+        context.fillStyle = '#4285f4'; // You can set your desired background color
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.font = '20px Arial'; // You can adjust the font size and family
+        context.fillStyle = '#ffffff'; // You can set your desired text color
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText(initials.toUpperCase(), canvas.width / 2, canvas.height / 2);
+    
+        // Convert the canvas to a data URL
+        const dataUrl = canvas.toDataURL();
+    
+        return dataUrl;
+    }
+    
+    function postComment() {
+        const name = document.getElementById('commentName').value;
+        const email = document.getElementById('commentEmail').value;
+        const msg = document.getElementById('commentMsg').value;
+    
+        if (name && email && msg) {
+            const commentContainer = document.getElementById('commentsContainer');
+    
+            const commentLi = document.createElement('li');
+            commentLi.className = 'comment-info-inner';
+    
+            const profileImageSrc = getDefaultProfileImage(name);
+    
+            commentLi.innerHTML = `
+                <article>
+                    <div class="comment-thumb">
+                        <img src="${profileImageSrc}" alt="profile-image">
+                    </div>
+                    <div class="comment-content">
+                        <h4>${name}</h4>
+                        <p>${msg}</p>
+                        <div class="cs-cmnt-meta">
+                            <ul>
+                                <li>${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</li>
+                                <li style="color:#fc9928;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            `;
+    
+            commentContainer.appendChild(commentLi);
+    
+            // Optional: Clear the form after posting the comment
+            document.getElementById('commentForm').reset();
+        } else {
+            alert('Please fill in all fields before submitting your comment.');
+        }
+    }
+    </script> -->
 </html>

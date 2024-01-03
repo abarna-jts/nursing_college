@@ -182,10 +182,10 @@
                 </div>
             </div>
             <div class="contact-form">
-                <form id="form">
+                <form id="form" method="POST" name="form">
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="text" name="name" placeholder="Enter your name" id="name" required 
+                            <input type="text" name="name_st" placeholder="Enter your name" id="name" required 
                             oninvalid="this.setCustomValidity('Please select all questions and proceed')"
                             oninput="this.setCustomValidity('')">
                         </div>
@@ -213,6 +213,25 @@
         </div>
     </div>
     <!-- contact form area end --> 
+
+    <!-- thank you message area start -->
+    <!-- <div class="vh-100 d-flex justify-content-center align-items-center" id="greeting">
+        <div>
+            <div class="mb-4 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
+                    fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                </svg>
+            </div>
+            <div class="text-center">
+                <h1>Thank You !</h1>
+                <p style="font-size: 1.4em;">Your Information was successfully submitted.</p>
+                <p style="font-style: italic;">We'll contact you when a decision is made.</p>
+                <!-- <button class="btn btn-primary" onclick="NxtPage()">Back Home</button> -->
+            <!-- </div>
+        </div>
+    thank you message area end  --> -->
 
     <!-- footer area start -->
     <footer>
@@ -298,22 +317,47 @@
 function validate() {
     const form = document.querySelector("#form")
    const submitButton = document.querySelector("#submit")
-   const scriptURL = 'https://script.google.com/macros/s/AKfycbzYSrqQtSjEm9t_ExpZMAofqzeIsonAMW9phZHdS2WYeRFJNro8yAhZil6M_-eP72Ez/exec'
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbzzt22FtWbuI6nCdiCZsqpfmNX4nb0SpCbvV66GFktOLgQyZLJewju66-FpUDhHQqJU2A/exec'
+                                 
    form.addEventListener('submit', e => {
-        submitButton.disabled = true;
-        e.preventDefault();
+     submitButton.disabled = true;
+     e.preventDefault();
 
-        let requestBody = new FormData(form);
-        fetch(scriptURL, { method: 'POST', body: requestBody })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert('Success!', data);
-                submitButton.disabled = false;
+     let requestBody = new FormData(form);
+     fetch(scriptURL, {method: 'POST', body: requestBody,})
+       .then(response => {
+        //   alert('Success!', response);
+          submitButton.disabled = false;
+
+          const greetingContainer = document.createElement('div');
+                greetingContainer.className = 'vh-100 d-flex justify-content-center align-items-center';
+                greetingContainer.id = 'greeting';
+
+                greetingContainer.innerHTML = `
+                    <div>
+                        <div class="mb-4 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
+                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </svg>
+                        </div>
+                        <div class="text-center">
+                            <h1>Thank You !</h1>
+                            <p style="line-height:1em;">Your Information was successfully submitted.</p>
+                            <p style="font-style: italic;" >We'll contact you when a decision is made.</p>
+                            <button class="btn btn-primary"  id="closeButton" onclick="nextpage()">Close</button>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(greetingContainer);
+
+                // Add event listener to close button
+                const closeButton = document.getElementById('closeButton');
+                closeButton.addEventListener('click', () => {
+                    document.body.removeChild(greetingContainer);
+                });
             })
             .catch(error => {
                 alert('Error!', error.message);
@@ -321,7 +365,6 @@ function validate() {
             });
     });
 }
-
 document.querySelector('#form').addEventListener('submit', function (e) {
     e.preventDefault();
     validate();
@@ -350,6 +393,10 @@ function validateEmail(input) {
             input.setCustomValidity('Enter a valid email address. Please include "@" and ".com"');
         }
     }
+function nextpage(){
+    window.location.href="contact.html";
+}
+
 
 </script> 
 </html>
