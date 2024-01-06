@@ -429,9 +429,9 @@
     .slider-content h3{
         font-size: 18px;
     }
-    .hb-right ul li{
+    /* .hb-right ul li{
         text-align: left;
-    }
+    } */
     .middle-logo {
         display: none!important;
     }
@@ -725,7 +725,6 @@
     .blog-details-area .cs-share-right {
         margin: 0;
     }
-
     /*404*/
     .error-content img {
         width: 63%;
@@ -741,8 +740,48 @@
 /* small mobile :320px. */
 
 @media (min-width: 240px) and (max-width: 479px) {
+    .slider_item{
+        top:20%;
+        padding:20px;
+    }
+    .image-container img{
+        height:25vh;
+    }
+    .slider-content h3{
+        font-size: 0.7em;
+        margin-left: -5%;
+    }
+    .slider-content h3:before {
+        height:2px;
+        width:50px;
+        left: 0;
+        top: 18px;
+    }
+    .slider-content h1{
+        line-height: 1;
+        margin-top: -5%;
+        font-size: 1em; 
+    }
+    .slider-content p{
+        font-size: 10px;
+        line-height: 1;
+        margin-top:-4%;
+        width:60%;
+    }
+    .slider-content .btn{
+        margin-top:-6%;
+    }
+    .slider-content a{
+        font-size:0.6em;
+    }
+    .slider-content .btn-lg{
+        padding: 5px 20px !important;
+    }
     .pb--80{
         padding-bottom: 40px;
+    }
+    .about-area{
+        margin-top:-10%;
     }
     /*Home One*/
     .offset-search input {
@@ -761,9 +800,11 @@
     .ht-social ul li a {
         margin: 0 5px;
     }
-    .logo {
-        text-align: center;
-        margin: 20px 0;
+    .header-bottom .logo {
+       margin:10px 0 0 10px;
+    }
+    .hb-right{
+        margin-top:-8%;
     }
     .header-bottom,
     .sticky-header.header-bottom {
@@ -774,16 +815,7 @@
     .header-bottom-inner {
         border: none;
     }
-    .slider-content>span {
-        font-size: 16px;
-    }
-    .slider-content h2 {
-        font-size: 25px;
-        line-height: 40px;
-    }
-    .slider-content p {
-        font-size: 15px;
-    }
+    
     .slider-area .owl-nav {
         display: none;
     }
@@ -848,7 +880,7 @@
         display: block;
     }
     .media-head  {
-        width: 100%;
+        /* width: 100%; */
         padding: 10px 0 16px;
     }
     .media-head  h2 {
@@ -962,7 +994,9 @@
     .title-tb {
         margin-top: 12px;
     }
-
+    .footer-top .social{
+        margin-left:3%;
+    }
     /*home three*/
     .header-three {
         padding: 0 15px;

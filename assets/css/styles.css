@@ -408,7 +408,7 @@ a:hover {
   font-size: 18px;
   color: #fff;
   cursor: pointer;
-  text-align: right;
+  /* text-align: right; */
 }
 /*search form*/
 
@@ -491,15 +491,25 @@ a:hover {
 *=============================================*/
 
 .slider_item {
-  height: 100vh;
-  width:100vh;
+  /* height: 100vh;
+  width:100%;
   display: flex;
   position: fixed;
   transform: translate(-50%,-0%);
-  top: 30%; /* Adjusted to move to the top */
+  top: 30%;
   left: 50%;
-  overflow: hidden;
+  overflow: hidden; */
+  height: auto;
+    width: 100%;
+    display: block;
+    position: fixed;
+    transform: translate(-50%, -0%);
+    top: 30%;
+    left: 50%;
+    overflow: hidden;
 }
+
+
 /* .slider_item{
   position: absolute;
   top: 50%;
@@ -511,14 +521,26 @@ a:hover {
   text-align: center;
 } */
 .slider-content {
-  max-height: 100%; /* Set the maximum height for the content */
-  overflow-y: auto; /* Enable vertical scrolling if needed */
+  /* display: block;
+  flex-direction: column; 
+  width:100%;
+  margin:0 auto;
+  overflow-y: auto;  */
+  display: block;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    overflow-y: auto;
 }
-.img_container{
-  width:150vh;
-}
+
 .slider-content h3 {
- color:#707070;
+ /* color:#707070;
+ font-size: 30px;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 10px; */
+  color: #707070;
   font-size: 30px;
   text-transform: uppercase;
   position: relative;
@@ -527,23 +549,44 @@ a:hover {
 }
 
 .slider-content h3:before {
-  content: "";
+  /* content: "";
   height: 2px;
   width: 50px;
   background: #fc9928;
   position: absolute;
   left: 0;
-  top: 12px;
+  top: 12px; */
+  content: "";
+    height: 2px;
+    width: 50px;
+    background: #fc9928;
+    position: absolute;
+    left: 0;
+    top: 12px;
 }
 .slider-content h1 {
-  font-size: 52px;
+  /* font-size: 52px;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 70px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
+  font-size: 52px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 70px;
+    margin-bottom: 20px;
 }
 .slider-content h1 span {
   display: block;
+}
+.image-container {
+  width: 100%;
+  max-width: 100%;
+}
+.img_container {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 .primary-color {
   color: #fc9928 !important;
@@ -554,8 +597,8 @@ a:hover {
 }
 
 .slider-content p {
-  font-size: 16px;
-  font-weight: 400;
+  /* font-size: 16px;
+  font-weight: 400; */
   font-style: italic;
 }
 /*animation*/
@@ -622,6 +665,11 @@ a:hover {
 .slider-area .owl-nav div:hover span {
   width: 50px;
   opacity: 1;
+}
+@media (max-width: 320px){
+  .slider_item{
+    top:10%;
+  }
 }
 
 /*============================================
@@ -1608,7 +1656,7 @@ span.post-date i {
 }
 
 .cnt-info {
-  padding: 40px 25px 40px;
+  padding: 40px 28px 40px;
   background: #fff;
 }
 
